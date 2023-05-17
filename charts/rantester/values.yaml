@@ -49,4 +49,5 @@ configmap:
   name: tester-configmap
 
 
-#nodeSelector:
+nodeSelector:
+  kubernetes.io/hostname: inatel-edge3   

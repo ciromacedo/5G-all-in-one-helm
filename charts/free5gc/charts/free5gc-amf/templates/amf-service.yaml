@@ -50,4 +50,23 @@ spec:
   selector:
     project: {{ $.Values.global.projectName }}
     nf: {{ .name }}
+---
+#Todo o bloco abaixo foi adicionado visando expor porta SCTP para fora do Cluster
+apiVersion: v1
+kind: Service
+metadata:
+  name: amf-sctp-service 
+  labels:
+    project: {{ $.Values.global.projectName }}
+    nf: {{ .name }}
+spec:
+  type: NodePort
+  ports:
+    - name: sctp
+      port: 38412
+      nodePort: 32412
+      protocol: SCTP  
+  selector:
+    project: {{ $.Values.global.projectName }}
+    nf: {{ .name }}
 {{- end }}
